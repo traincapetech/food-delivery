@@ -24,7 +24,7 @@ export const Cart: React.FC = () => {
           <Text style={styles.emptySubtitle}>Add items from a restaurant to get started.</Text>
           <Button
             title="Browse Restaurants"
-            onPress={() => navigation.navigate('HomeTab')}
+            onPress={() => navigation.navigate('Home')}
             style={styles.browseBtn}
           />
         </View>

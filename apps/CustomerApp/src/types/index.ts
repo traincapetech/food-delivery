@@ -81,6 +81,8 @@ export interface Restaurant {
   prepTimeRange: string; // e.g. "15-25 min"
   categories: string[];
   foodItems: FoodItem[];
+  distanceKm?: number;
+  promoTag?: string;
 }
 
 export interface CartItem {
