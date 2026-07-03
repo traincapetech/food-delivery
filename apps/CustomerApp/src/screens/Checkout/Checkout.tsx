@@ -184,10 +184,9 @@ export const Checkout: React.FC = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={[styles.payRow, paymentMethod === 'CASH' && styles.payRowSelected]}
+            style={[styles.payRow, paymentMethod === 'CASH' && styles.payRowSelected, styles.payRowLast]}
             onPress={() => setPaymentMethod('CASH')}
             activeOpacity={0.7}
-            style={styles.payRowLast}
           >
             <View style={styles.payRowInner}>
               <Text style={styles.payIcon}>💵</Text>
