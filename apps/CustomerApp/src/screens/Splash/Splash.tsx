@@ -24,9 +24,21 @@ export const Splash: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.emoji}>🥑</Text>
-      <Text style={styles.logoText}>FoodExpress</Text>
-      <ActivityIndicator size="small" color={COLORS.primary} style={styles.loader} />
+      {/* <Text style={styles.emoji}>🥑</Text> */}
+      <View style={{flexDirection:"column", alignItems:"center"}}>
+        <View style={{flexDirection:"row"}}>
+          <Text style={styles.logoText}>Food</Text>
+      <Text style={{...styles.logoText,color:"#06C167"}}>Express</Text>
+        </View>
+        <Text style={styles.descText}>Delivering freshness to your door</Text>
+      </View>
+      <View style={{marginBottom:100}}>
+        <ActivityIndicator size="large" color={COLORS.primary} style={styles.loader} />
+      <Text style={styles.serveStyle}>ready to serve</Text>
+      </View>
+      <View>
+        <Text style={{...styles.descText,opacity:0.3}}>© 2026 FoodExpress Inc.</Text>
+      </View>
     </View>
   );
 };
@@ -35,8 +47,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.secondary, // Black premium look
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    paddingTop:110,
   },
   emoji: {
     fontSize: 72,
@@ -48,9 +61,24 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     letterSpacing: 1,
   },
+  descText: {
+    fontSize: 14,
+    fontWeight: '400',
+    color: 'rgba(255,255,255,0.75)',
+    letterSpacing: 0.8,
+    marginTop: 8,
+    textAlign: 'center',
+    lineHeight: 22,
+  },
   loader: {
     marginTop: 40,
   },
+  serveStyle:{
+    textTransform:"uppercase",
+    color:'rgba(255, 255, 255, 0.4)',
+    letterSpacing: 1.5,
+    fontSize:12
+  }
 });
 
 export default Splash;
