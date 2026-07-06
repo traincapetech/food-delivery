@@ -1,3 +1,5 @@
+// imports
+
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -7,6 +9,8 @@ import Input from '../../components/common/Input';
 import SafeView from '../../components/common/SafeView';
 import Header from '../../components/common/Header';
 import useAuthStore from '../../store/useAuthStore';
+
+
 
 export const OTP: React.FC = () => {
   const navigation = useNavigation<any>();
@@ -74,6 +78,7 @@ export const OTP: React.FC = () => {
           variant="text"
           onPress={() => console.log('Resending OTP')}
           style={styles.resendBtn}
+          textStyle={{color:"#8A8A8A"}}
         />
       </View>
     </SafeView>

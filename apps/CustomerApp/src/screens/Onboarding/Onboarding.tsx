@@ -146,6 +146,9 @@
 // export default Onboarding;
 
 
+
+// imports
+
 import React, { useState } from 'react';
 import {
   StyleSheet,
@@ -164,8 +167,11 @@ import Button from '../../components/common/Button';
 import SafeView from '../../components/common/SafeView';
 import useAuthStore from '../../store/useAuthStore';
 
+
 const { width } = Dimensions.get('window');
 
+
+// static data
 const SLIDES = [
   {
     image: Bg1,
@@ -190,11 +196,17 @@ const SLIDES = [
   },
 ];
 
+
+// component
 export const Onboarding: React.FC = () => {
+
+
+  // initialisations and hooks
   const navigation = useNavigation<any>();
   const { setOnboarded } = useAuthStore();
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  // function working: until currentSlide state has value less than 2, this fn simply increments the state by 1. when value is 2, if becomes false and control moves to else. setOnboarded is invoked to set "isOnboarded" as true and user is navigated to login screen.
   const handleNext = () => {
     if (currentSlide < SLIDES.length - 1) {
       setCurrentSlide(currentSlide + 1);
@@ -205,20 +217,23 @@ export const Onboarding: React.FC = () => {
   };
 
   return (
-    <SafeView
-      style={[styles.container, { backgroundColor: 'transparent' }]}
-      edges={['bottom']}
-    >
+    <>
+
+      {/* makes the screen to take up complete height of device and render dark status bar contents */}
       <StatusBar
-              translucent
-              backgroundColor="transparent"
-              barStyle="light-content"
-            />
+        translucent
+        backgroundColor="transparent"
+        barStyle="dark-content"
+      />
+
+      {/* this helps to make an image as background. for 3 screens 3 differnet images are rendered  */}
       <ImageBackground
         source={SLIDES[currentSlide].image}
         style={styles.background}
         resizeMode="cover"
       >
+
+        {/* skip text view */}
         <View style={styles.skipRow}>
           <Button
             title="Skip"
@@ -231,21 +246,26 @@ export const Onboarding: React.FC = () => {
           />
         </View>
 
+
+        {/* complete view for content */}
         <View style={styles.slideContainer}>
+          {/* emoji */}
           <Text style={styles.slideEmoji}>
             {SLIDES[currentSlide].emoji}
           </Text>
-
+          {/* title of screen */}
           <Text style={styles.slideTitle}>
             {SLIDES[currentSlide].title}
           </Text>
-
+          {/* small desc below title */}
           <Text style={styles.slideDesc}>
             {SLIDES[currentSlide].description}
           </Text>
         </View>
 
+        {/* view for rendering progress dots and button */}
         <View style={styles.bottomSection}>
+          {/* helps to render the 3 dots that show transition progress */}
           <View style={styles.dotsRow}>
             {SLIDES.map((_, i) => (
               <View
@@ -258,6 +278,7 @@ export const Onboarding: React.FC = () => {
             ))}
           </View>
 
+          {/* button for going to next onboarding screen. changes text when all the screens are visited */}
           <Button
             title={
               currentSlide === SLIDES.length - 1
@@ -269,9 +290,12 @@ export const Onboarding: React.FC = () => {
           />
         </View>
       </ImageBackground>
-    </SafeView>
+    </>
   );
 };
+
+
+// styles
 
 const styles = StyleSheet.create({
   background: {
@@ -323,7 +347,7 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: COLORS.border,
+    backgroundColor: "#bdbdbd",
     marginHorizontal: 4,
   },
   dotActive: {
